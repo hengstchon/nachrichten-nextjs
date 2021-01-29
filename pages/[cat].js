@@ -18,6 +18,7 @@ export async function getStaticProps({ params }) {
   const feedData = await getFeedData(cat)
   return {
     props: { feedData },
+    revalidate: 10,
   }
 }
 
