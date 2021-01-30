@@ -45,7 +45,7 @@ const Nav = ({ navName }) => {
       <aside
         className={`fixed top-0 left-0 w-64 h-full bg-white overflow-auto transition-all ease-in-out duration-300 transform ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:transform-none md:border-r`}
+        } lg:transform-none lg:border-r`}
       >
         <div className="lg:h-16"></div>
         <div className="py-8">

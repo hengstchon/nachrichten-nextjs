@@ -2,11 +2,11 @@ import ReactPaginate from 'react-paginate'
 
 const Pagination = ({ totalPage, handlePageClick }) => {
   const pageLinkClassName =
-    'flex justify-center items-center w-8 h-8 rounded-full text-lg font-medium mx-3 bg-gray-100 hover:bg-gray-300'
+    'flex justify-center items-center w-8 h-8 rounded-full text-lg font-medium mx-3 cursor-pointer bg-gray-100 hover:bg-gray-300'
 
   return (
     <div className="flex">
-      <div className="hidden w-64 h-10 md:block"></div>
+      <div className="hidden w-64 h-10 lg:block"></div>
       <div className="flex-1 justify-center mt-5 mb-20">
         <ReactPaginate
           pageCount={totalPage}
