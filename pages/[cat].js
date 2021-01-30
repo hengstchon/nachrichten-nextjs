@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Item from '../components/Item'
-import Nav from '../components/Nav'
-import Pagination from '../components/Pagination'
+import Nav from '../components/nav'
+import Page from '../components/page'
+import Pagination from '../components/pagination'
 import { getAllPaths, getFeedData } from '../lib/utils'
 
 export async function getStaticPaths() {
@@ -18,7 +18,7 @@ export async function getStaticProps({ params }) {
   const feedData = await getFeedData(cat)
   return {
     props: { feedData },
-    revalidate: 10,
+    revalidate: 1,
   }
 }
 
@@ -54,18 +54,8 @@ export default function Content({ feedData }) {
       </Head>
 
       <Nav navName={navName} />
-
-      <div className="container md:max-w-screen-md mx-auto px-5 pt-5 divide-y">
-        <div className="divide-y">
-          {pageItems.map((item, index) => (
-            <Item key={index} item={item}></Item>
-          ))}
-        </div>
-
-        <div className="flex justify-center pt-10 pb-20">
-          <Pagination totalPage={totalPage} handlePageClick={handlePageClick} />
-        </div>
-      </div>
+      <Page pageItems={pageItems} />
+      <Pagination totalPage={totalPage} handlePageClick={handlePageClick} />
     </>
   )
 }
