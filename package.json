@@ -14,7 +14,8 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-paginate": "^7.0.0",
-    "rss-parser": "^3.10.0"
+    "rss-parser": "^3.10.0",
+    "swr": "^0.5.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.3",

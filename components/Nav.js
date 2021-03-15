@@ -10,14 +10,14 @@ const Nav = ({ navName }) => {
     <>
       <div className="flex">
         <div className="hidden w-64 h-16 lg:block"></div>
-        <div className="flex-1 flex items-center justify-between px-6 h-16 bg-yellow-200 text-gray-700 border-b border-gray-200">
-          <button
-            className="absolute mr-2 lg:hidden"
+        <div className="flex-1 flex items-center justify-between px-6 h-12 bg-yellow-400 text-black">
+          <a
+            className="absolute cursor-pointer mr-2 lg:hidden"
             aria-label="Open Menu"
             onClick={toggleOpen}
           >
             <svg
-              className="w-8 h-8"
+              className="w-5 h-5"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -30,7 +30,7 @@ const Nav = ({ navName }) => {
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-          </button>
+          </a>
           <span className="mx-auto text-xl font-bold">{navName}</span>
         </div>
       </div>
@@ -43,15 +43,15 @@ const Nav = ({ navName }) => {
       ></div>
 
       <aside
-        className={`fixed top-0 left-0 w-64 h-full bg-white overflow-auto transition-all ease-in-out duration-300 transform ${
+        className={`fixed top-0 left-0 w-64 h-full overflow-auto transition-all ease-in-out duration-300 transform z-50 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:transform-none lg:border-r`}
+        } lg:transform-none lg:border-r lg:border-gray-600 bg-gray-700 lg:bg-bg`}
       >
         <div className="lg:h-16"></div>
         <div className="py-8">
           {feeds.map(({ navName, cat }) => {
             return (
-              <NavCat
+              <NavItem
                 key={navName}
                 navName={navName}
                 cat={cat}
@@ -65,14 +65,14 @@ const Nav = ({ navName }) => {
   )
 }
 
-const NavCat = ({ navName, cat, toggleOpen }) => {
+const NavItem = ({ navName, cat, toggleOpen }) => {
   const router = useRouter()
   const currentCat = router.query.cat
   return (
     <Link href={`/${cat}`}>
       <a
-        className={`flex items-center px-6 py-3 hover:bg-yellow-500 hover:text-white ${
-          cat === currentCat ? 'text-yellow-500 font-medium' : 'text-gray-500'
+        className={`flex items-center px-6 py-3 hover:bg-red-400 hover:text-white ${
+          cat === currentCat ? 'text-red-400 font-medium' : 'text-gray-200'
         }`}
         onClick={toggleOpen}
       >

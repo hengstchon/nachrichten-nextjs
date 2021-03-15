@@ -10,14 +10,15 @@ const Item = ({ item }) => {
       <a
         href={link}
         target="_blank"
-        className="text-xl font-medium leading-tight text-gray-800 hover:underline"
+        className="text-xl font-medium leading-tight text-white hover:underline text-blue-400"
       >
         {title}
       </a>
-      <div className="text-sm pt-2 text-gray-500">
+      <div className="text-sm pt-2 text-gray-400">
         {dayjs(isoDate).fromNow()}
       </div>
-      <div className="pt-2 text-gray-600">{content}</div>
+      <div className="text-sm pt-2">{isoDate}</div>
+      <div className="pt-2 text-text">{content}</div>
     </div>
   )
 }

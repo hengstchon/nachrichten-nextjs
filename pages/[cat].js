@@ -2,60 +2,29 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Nav from '../components/nav'
 import Page from '../components/page'
-import Pagination from '../components/pagination'
-import { getAllPaths, getFeedData } from '../lib/utils'
+import { fetcher } from '../lib/utils'
+import useSWR from 'swr'
 
-export async function getStaticPaths() {
-  const paths = getAllPaths()
-  return {
-    paths,
-    fallback: false,
-  }
-}
-
-export async function getStaticProps({ params }) {
-  const { cat } = params
-  const feedData = await getFeedData(cat)
-  return {
-    props: { feedData },
-    revalidate: 1,
-  }
-}
-
-export default function Content({ feedData }) {
-  const { navName, data } = feedData
-  const { items } = data
-
+export default function Content() {
   const router = useRouter()
-  const { pathname, query } = router
-  const currentPage = query.page || '1'
-
-  // calculate newsItems in current page from all news
-  const itemsPerPage = 10
-  const totalItems = items.length
-  const totalPage = Math.ceil(totalItems / itemsPerPage)
-  const lastItemNum = parseInt(currentPage) * itemsPerPage
-  const firstItemNum = lastItemNum - itemsPerPage
-  const pageItems = items.slice(firstItemNum, lastItemNum)
-
-  const handlePageClick = data => {
-    const selected = data.selected
-    router.push({
-      pathname,
-      query: { ...query, page: selected + 1 },
-    })
-  }
+  const cat = router.query.cat || ''
+  const page = router.query.page || '1'
+  const { data } = useSWR(`/api/${cat}?page=${page}`, fetcher)
+  console.log('data: ', data)
+  const { navName, totalPage, pageItems } = data || {}
 
   return (
-    <>
+    <div className="bg-bg text-white">
       <Head>
         <title>Nachrichten</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Nav navName={navName} />
-      <Page pageItems={pageItems} />
-      <Pagination totalPage={totalPage} handlePageClick={handlePageClick} />
-    </>
+
+      {pageItems && (
+        <Page pageItems={pageItems} totalPage={totalPage} page={page} />
+      )}
+    </div>
   )
 }
