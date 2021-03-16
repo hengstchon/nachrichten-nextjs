@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Nav from '../components/nav'
-import Page from '../components/page'
-import { fetcher } from '../lib/utils'
 import useSWR from 'swr'
+import Nav from '../components/Nav'
+import Page from '../components/Page'
+import { fetcher } from '../lib/utils'
 
 export default function Content() {
   const router = useRouter()

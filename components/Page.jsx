@@ -1,5 +1,5 @@
-import Item from './item'
-import Pagination from '../components/pagination'
+import Item from './Item'
+import Pagination from './Pagination'
 
 const Page = ({ pageItems, totalPage, page }) => {
   return (
