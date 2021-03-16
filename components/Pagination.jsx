@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 const Pagination = ({ totalPage, page }) => {
   const router = useRouter()
   const { cat } = router.query
-  console.log('category: ', cat)
 
   // https://dev.to/namirsab/comment/2050
   const range = (start, end) => {
@@ -34,7 +33,6 @@ const Pagination = ({ totalPage, page }) => {
     // Greater than startPages
     boundaryCount + 2
   )
-  console.log('siblingsStart: ', siblingsStart)
 
   const siblingsEnd = Math.min(
     Math.max(
@@ -46,7 +44,6 @@ const Pagination = ({ totalPage, page }) => {
     // Less than endPages
     endPages.length > 0 ? endPages[0] - 2 : count - 1
   )
-  console.log('siblingsEnd: ', siblingsEnd)
 
   // Basic list of items to render
   // e.g. itemList = ['first', 'previous', 1, 'ellipsis', 4, 5, 6, 'ellipsis', 10, 'next', 'last']
@@ -78,8 +75,6 @@ const Pagination = ({ totalPage, page }) => {
     ...(hideNextButton ? [] : ['next']),
     ...(showLastButton ? ['last'] : []),
   ]
-
-  console.log('itemList: ', itemList)
 
   const buttonPage = type => {
     switch (type) {

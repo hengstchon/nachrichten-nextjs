@@ -10,7 +10,6 @@ export default function Content() {
   const cat = router.query.cat || ''
   const page = router.query.page || '1'
   const { data } = useSWR(`/api/${cat}?page=${page}`, fetcher)
-  console.log('data: ', data)
   const { navName, totalPage, pageItems } = data || {}
 
   return (
