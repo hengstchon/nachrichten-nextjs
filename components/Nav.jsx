@@ -43,7 +43,7 @@ const Nav = ({ navName }) => {
       ></div>
 
       <aside
-        className={`fixed top-0 left-0 w-64 h-full overflow-auto transition-all ease-in-out duration-300 transform z-50 ${
+        className={`fixed top-0 left-0 w-64 h-full overflow-auto overscroll-contain transition-all ease-in-out duration-300 transform z-50 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:transform-none lg:border-r lg:border-gray-600 bg-gray-700 lg:bg-bg`}
       >

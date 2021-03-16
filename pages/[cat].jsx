@@ -11,7 +11,6 @@ export default function Content() {
   const page = router.query.page || '1'
   const { data } = useSWR(`/api/${cat}?page=${page}`, fetcher)
   const { navName, totalPage, pageItems } = data || {}
-
   return (
     <div className="bg-bg text-white">
       <Head>
@@ -21,9 +20,7 @@ export default function Content() {
 
       <Nav navName={navName} />
 
-      {pageItems && (
-        <Page pageItems={pageItems} totalPage={totalPage} page={page} />
-      )}
+      <Page pageItems={pageItems} totalPage={totalPage} page={page} />
     </div>
   )
 }

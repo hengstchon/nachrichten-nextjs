@@ -17,7 +17,6 @@ const Item = ({ item }) => {
       <div className="text-sm pt-2 text-gray-400">
         {dayjs(isoDate).fromNow()}
       </div>
-      <div className="text-sm pt-2">{isoDate}</div>
       <div className="pt-2 text-text">{content}</div>
     </div>
   )
