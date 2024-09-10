@@ -1,7 +1,7 @@
 import Parser from 'rss-parser'
 import { feeds } from '../../config/feeds'
 
-const CORS_PROXY = 'https://heroku-cors.herokuapp.com/'
+const CORS_PROXY = "https://cors.deu.workers.dev/";
 const ITEMS_PER_PAGE = 10
 
 const clean = (data, page) => {

@@ -69,13 +69,13 @@ const NavItem = ({ navName, cat, toggleOpen }) => {
   const router = useRouter()
   const currentCat = router.query.cat
   return (
-    <Link href={`/${cat}`}>
-      <a
-        className={`flex items-center px-6 py-3 hover:bg-red-400 hover:text-white ${
-          cat === currentCat ? 'text-red-400 font-medium' : 'text-gray-200'
-        }`}
-        onClick={toggleOpen}
-      >
+    <Link 
+      href={`/${cat}`}
+      className={`flex items-center px-6 py-3 hover:bg-red-400 hover:text-white ${
+        cat === currentCat ? 'text-red-400 font-medium' : 'text-gray-200'
+      }`}
+      onClick={toggleOpen}
+    >
         <svg
           className="w-4 h-4"
           xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,6 @@ const NavItem = ({ navName, cat, toggleOpen }) => {
           />
         </svg>
         <span className="mx-3">{navName}</span>
-      </a>
     </Link>
   )
 }
